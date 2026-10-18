@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/produtos", produtosRoutes);
 
 app.get("/", function(req,res){
-    res.status(200).json({message:"API da biblioteca funcionando"});
+    res.status(200).json({message:"API do mercado funcionando"});
 });
 
 async function iniciarServidor() {

@@ -9,4 +9,5 @@ router.post("/", cadastrarProduto);
 router.put("/:id", atualizarProduto);
 router.delete("/:id", excluirProduto);
 
+
 export default router;

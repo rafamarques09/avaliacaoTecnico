@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Mercado</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagens/iconCarrinhoCompra.png">
+</head>
+
+<body>
+    <main>
+        <h1>Sistema de Mercado</h1>
+        <p id="mensagem"></p>
+
+        <div class="container-principal">
+            
+            <div class="secao-tabela-container">
+                <!-- Barra de Ações e Filtros -->
+                <div class="controles-tabela">
+                    <button id="btnBuscar">Buscar produtos</button>
+
+                    <!-- Filtro por Categoria -->
+                    <div class="filtro-grupo">
+                        <label for="filtroCategoria">Filtrar por Categoria:</label>
+                        <select id="filtroCategoria">
+                            <option value="">Todas as Categorias</option>
+                            <!-- As opções de categoria podem ser dinâmicas via JS ou adicionadas manualmente aqui -->
+                        </select>
+                    </div>
+
+                    <!-- Ordenação -->
+                    <div class="filtro-grupo">
+                        <label for="ordenarPor">Ordenar por:</label>
+                        <select id="ordenarPor">
+                            <option value="id">ID</option>
+                            <option value="nome-asc">Nome (A - Z)</option>
+                            <option value="nome-desc">Nome (Z - A)</option>
+                            <option value="preco-asc">Preço (Menor primeiro)</option>
+                            <option value="preco-desc">Preço (Maior primeiro)</option>
+                            <option value="quantidade-asc">Quantidade (Menor primeiro)</option>
+                            <option value="quantidade-desc">Quantidade (Maior primeiro)</option>
+                            <option value="validade-asc">Validade (Mais próxima)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Imagem</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Validade</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaProdutos"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <section class="secao-cadastro">
+                <h2>Cadastrar novo produto</h2>
+                <form id="formProduto">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" id="categoria" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="urlImagem">Link da Imagem</label>
+                        <input type="url" id="urlImagem" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preco">Preço</label>
+                        <input type="number" step="0.01" id="preco" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="number" id="quantidade" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="validade">Validade</label>
+                        <input type="date" id="validade" required>
+                    </div>
+
+                    <button type="submit" id="btnSalvar">Cadastrar</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="modalEdicao" class="modal" style="display: none;">
+        <div class="modal-conteudo">
+            <h3 id="modalTitulo">Editar Produto</h3>
+            <form id="formEditar">
+                <div id="camposEdicaoContainer">
+                    <div class="form-group">
+                        <label for="editNome">Nome:</label>
+                        <input type="text" id="editNome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editCategoria">Categoria:</label>
+                        <input type="text" id="editCategoria">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editUrlImagem">URL Imagem:</label>
+                        <input type="text" id="editUrlImagem">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPreco">Preço:</label>
+                        <input type="number" step="0.01" id="editPreco">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editQuantidade">Quantidade:</label>
+                        <input type="number" id="editQuantidade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editValidade">Validade:</label>
+                        <input type="date" id="editValidade">
+                    </div>
+                </div>
+
+                <div class="modal-botoes">
+                    <button type="submit" id="btnSalvarEdicao">Salvar</button>
+                    <button type="button" id="btnFecharModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
